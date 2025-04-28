@@ -112,7 +112,24 @@ namespace ReClassNET.Forms
 			projectView.Clear();
 			projectView.AddEnums(currentProject.Enums);
 			projectView.AddClasses(currentProject.Classes);
-			CurrentClassNode = currentProject.Classes.FirstOrDefault();
+
+			var lastSelectedClass = currentProject.CustomData.GetString("LastSelectedClass");
+			if (!string.IsNullOrEmpty(lastSelectedClass))
+			{
+				var index = currentProject.Classes.FindIndex((c) => c.Name == lastSelectedClass);
+				if (index != -1)
+				{
+					CurrentClassNode = currentProject.Classes[index];
+				}
+				else
+				{
+					CurrentClassNode = currentProject.Classes.FirstOrDefault();
+				}
+			}
+			else
+			{
+				CurrentClassNode = currentProject.Classes.FirstOrDefault();
+			}
 		}
 
 		/// <summary>Opens the <see cref="InputBytesForm"/> and calls <paramref name="callback"/> with the result.</summary>
