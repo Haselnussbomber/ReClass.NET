@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using ReClassNET.Util;
@@ -28,8 +28,15 @@ namespace ReClassNET.Nodes
 
 			foreach (var c in graph.Vertices)
 			{
-				foreach (var wrapperNode in c.Nodes.OfType<BaseWrapperNode>())
+				foreach (var node in c.Nodes)
 				{
+					if (!node.IsWrapped)
+						continue;
+
+					if (node is not BaseWrapperNode wrapperNode)
+						continue;
+
+					// BaseWrapperNode
 					if (wrapperNode.ShouldPerformCycleCheckForInnerNode() && wrapperNode.ResolveMostInnerNode() is ClassNode classNode)
 					{
 						graph.AddEdge(c, classNode);

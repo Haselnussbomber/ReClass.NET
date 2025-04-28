@@ -439,11 +439,15 @@ namespace ReClassNET.Forms
 
 		private void RemoveSelectedNodes()
 		{
-			memoryViewControl.GetSelectedNodes()
-				.WhereNot(h => h.Node is ClassNode)
-				.ForEach(h => h.Node.GetParentContainer().RemoveNode(h.Node));
-
-			ClearSelection();
+			var ng = memoryViewControl.GetSelectedNodes()
+				.WhereNot(h => h.Node is ClassNode || h.Node.GetParentContainer() == null).GroupBy(k => k.Node.GetParentContainer());
+			foreach (var group in ng)
+			{
+				if (group.Key is { } bcn)
+				{
+					bcn.RemoveNodes(group.Select(h => h.Node));
+				}
+			}
 		}
 
 		private void HideSelectedNodes()

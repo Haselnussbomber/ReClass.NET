@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Xml.Linq;
+using ReClassNET.Controls;
 using ReClassNET.DataExchange.ReClass.Legacy;
 using ReClassNET.Extensions;
 using ReClassNET.Logger;
@@ -223,6 +224,7 @@ namespace ReClassNET.DataExchange.ReClass
 
 					if (wrapperNode.CanChangeInnerNodeTo(innerNode))
 					{
+						/*
 						var rootWrapperNode = node.GetRootWrapperNode();
 						if (rootWrapperNode.ShouldPerformCycleCheckForInnerNode()
 							&& innerNode is ClassNode classNode
@@ -232,7 +234,7 @@ namespace ReClassNET.DataExchange.ReClass
 
 							return null;
 						}
-
+						*/
 						wrapperNode.ChangeInnerNode(innerNode);
 					}
 					else

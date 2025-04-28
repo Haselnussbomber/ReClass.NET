@@ -231,18 +231,18 @@ namespace ReClassNET.Forms
 
 		private void openProjectToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			try
-			{
+			/*try
+			{*/
 				var path = ShowOpenProjectFileDialog();
 				if (path != null)
 				{
 					LoadProjectFromPath(path);
-				}
+				}/*
 			}
 			catch (Exception ex)
 			{
 				Program.Logger.Log(ex);
-			}
+			}*/
 		}
 
 		private void mergeWithProjectToolStripMenuItem_Click(object sender, EventArgs e)

@@ -91,7 +91,7 @@ namespace ReClassNET.Nodes
 
 			x = AddText(context, x, y, context.Settings.TypeColor, HotSpot.NoneId, "Class") + context.Font.Width;
 			x = AddText(context, x, y, context.Settings.NameColor, HotSpot.NameId, Name) + context.Font.Width;
-			x = AddText(context, x, y, context.Settings.ValueColor, HotSpot.NoneId, $"[{MemorySize}]") + context.Font.Width;
+			x = AddText(context, x, y, context.Settings.ValueColor, HotSpot.NoneId, $"[0x{MemorySize:X}]") + context.Font.Width;
 			x = AddComment(context, x, y);
 
 			y += context.Font.Height;
