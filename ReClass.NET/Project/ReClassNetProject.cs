@@ -37,6 +37,8 @@ namespace ReClassNET.Project
 		/// </summary>
 		public CppTypeMapping TypeMapping { get; } = new CppTypeMapping();
 
+		public bool Loaded { get; internal set; }
+
 		public void Dispose()
 		{
 			Clear();
@@ -75,7 +77,8 @@ namespace ReClassNET.Project
 
 		private void NodesChanged_Handler(BaseNode sender)
 		{
-			classes.ForEach(c => c.UpdateOffsets());
+			if (Loaded)
+				classes.ForEach(c => c.UpdateOffsets());
 		}
 
 		public void Clear()

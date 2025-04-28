@@ -130,6 +130,8 @@ namespace ReClassNET.Forms
 			{
 				CurrentClassNode = currentProject.Classes.FirstOrDefault();
 			}
+
+			currentProject.Loaded = true;
 		}
 
 		/// <summary>Opens the <see cref="InputBytesForm"/> and calls <paramref name="callback"/> with the result.</summary>
