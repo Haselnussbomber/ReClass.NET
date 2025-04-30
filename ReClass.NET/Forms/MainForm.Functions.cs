@@ -132,6 +132,9 @@ namespace ReClassNET.Forms
 			}
 
 			currentProject.Loaded = true;
+
+			foreach (var c in currentProject.Classes)
+				c.UpdateOffsets();
 		}
 
 		/// <summary>Opens the <see cref="InputBytesForm"/> and calls <paramref name="callback"/> with the result.</summary>
